@@ -26,7 +26,7 @@ the venture begins..
 
 ### 🤖 BASIC ROBOTICS SIMULATIONS (NO HARDWARE)
 
-*   [ ] **Virtual Turtle Maze Solver**
+*   [✅] **Virtual Turtle Maze Solver**
     *   Uses Python's built-in `turtle` graphics library.
     *   Navigates a digital "robot" out of a custom wall maze autonomously.
 *   [ ] **Inverse Kinematics Calculator**
