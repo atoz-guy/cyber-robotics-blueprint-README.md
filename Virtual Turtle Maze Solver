@@ -1,47 +1,28 @@
-#import turtle
+import turtle
 
-# Maze-solving robot simulation
-# (turtle graphics replaced with text output
-#  since this playground runs on a server with no display)
+# 1. Setup the physical window and the visual robot
+window = turtle.Screen()
+robot = turtle.Turtle(shape="turtle")
+robot.speed(2)
 
-import math
-
-# Robot state
-x, y = 0.0, 0.0
-angle = 90  # facing up (North)
-
-def forward(dist):
-    global x, y
-    rad = math.radians(angle)
-    x += dist * math.cos(rad)
-    y += dist * math.sin(rad)
-
-def right(deg):
-    global angle  # FIX: Crucial for Replit and standard Python environments
-    angle = (angle - deg) % 360
-
-def left(deg):
-    global angle  # FIX: Crucial for Replit and standard Python environments
-    angle = (angle + deg) % 360
-
-def direction_name(a):
-    names = {0: "East", 90: "North", 180: "West", 270: "South"}
-    return names.get(a % 360, f"{a}deg")
+# Set initial visual state to match your logic (facing North/Up)
+robot.left(90) 
 
 def solve_maze(steps):
-    global x, y, angle  # Safe practice for running in global iteration blocks
     for i in range(steps):
-        forward(50)
+        robot.forward(50)  # Physically drives the turtle forward
+        
         if i % 3 == 0:
-            right(90)
-            turn = "turned right"
+            robot.right(90)  # Physically turns the turtle right
+            print(f"Step {i+1:2d}: Turned Right | Heading: {robot.heading()} degrees")
         elif i % 5 == 0:
-            left(90)
-            turn = "turned left"
+            robot.left(90)   # Physically turns the turtle left
+            print(f"Step {i+1:2d}: Turned Left  | Heading: {robot.heading()} degrees")
         else:
-            turn = "went straight"
-        print(f"Step {i+1:2d}: {turn:15s} | pos ({x:6.1f}, {y:6.1f}) | facing {direction_name(angle)}")
+            print(f"Step {i+1:2d}: Went Straight | Heading: {robot.heading()} degrees")
 
+# 2. Execute the visual navigation loop
 solve_maze(20)
-print("\nDone! Robot finished navigating the maze.")
-Use code with caution.
+
+# Keep the graphics window open until you manually close it
+window.mainloop()
