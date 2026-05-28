@@ -1,4 +1,4 @@
-import turtle
+#import turtle
 
 # 1. Setup the screen and the digital "robot"
 window = turtle.Screen()
