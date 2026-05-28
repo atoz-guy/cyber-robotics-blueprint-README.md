@@ -1,0 +1,19 @@
+import turtle
+
+# 1. Setup the screen and the digital "robot"
+window = turtle.Screen()
+robot = turtle.Turtle(shape="turtle")
+robot.speed(2)
+
+# 2. Define the autonomous maze-solving logic function
+def solve_maze(steps):
+    for i in range(steps):
+        robot.forward(50)  # Move forward 50 pixels
+        if i % 3 == 0:     # Simulated sensor check: turn right on specific steps
+            robot.right(90)
+        elif i % 5 == 0:   # Simulated sensor check: turn left if path is blocked
+            robot.left(90)
+
+# 3. Execute the navigation loop and hold the window open
+solve_maze(20)
+window.mainloop()
